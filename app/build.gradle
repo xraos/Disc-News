@@ -1,0 +1,38 @@
+// Calculo del version code
+def BUILD_DATE_TIME = new Date()
+            .format("yywwuHHmm").toInteger()
+logger.lifecycle("Using buildDateTime: ${BUILD_DATE_TIME}")
+
+// Nombre del build
+//
+def BUILD_NAME = "Monkey King"
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "cl.ucn.disc.dam.discnews"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode BUILD_DATE_TIME
+        versionName "${BUILD_NAME}-${BUILD_DATE_TIME}"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
