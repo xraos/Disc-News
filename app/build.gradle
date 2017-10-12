@@ -37,6 +37,23 @@ android {
             versionNameSuffix "-debug"
         }
     }
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions{
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/LICENCE'
+        exclude 'META-INF/LICENCE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions{
+        abortOnError false
+        //disable 'inlinedApi','AllowBackup'
+        showAll true
+        htmlReport true
+    }
 }
 
 dependencies {
