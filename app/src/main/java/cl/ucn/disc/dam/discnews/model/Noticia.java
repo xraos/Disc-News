@@ -20,7 +20,7 @@ public final class Noticia {
      * Descripcion en una linea del titulo de la noticia
      */
     @Getter
-    private String titulo;
+    private String titulo = "hola";
 
     /**
      * Descripcion en 2 lineas y con un maximo de 140 chars
