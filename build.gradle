@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
         
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -16,6 +17,9 @@ buildscript {
 }
 
 allprojects {
+    // buildDir = "${System.env.TEMP}//gradle-build//${rootProject.name}//${project.name}"
+    logger.lifecycle("Using buildDir: {}", buildDir)
+
     repositories {
         google()
         jcenter()

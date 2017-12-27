@@ -1,16 +1,13 @@
 // Calculo del version code
-def BUILD_DATE_TIME = new Date()
-        .format("yywwuHHmm").toInteger()
-logger.lifecycle("Using buildDateTime: ${BUILD_DATE_TIME}")
+def BUILD_DATE_TIME = new Date().format("yywwuHHmm").toInteger()
+logger.lifecycle("Using Buildtime: ${BUILD_DATE_TIME}")
 
 // Nombre del build
 //
 def BUILD_NAME = "Monkey King"
 
 apply plugin: 'com.android.application'
-
-// Version Dbflow
-def dbflow_version = "4.1.2"
+apply plugin: 'com.github.ben-manes.versions'
 
 android {
     compileSdkVersion 26
@@ -22,6 +19,12 @@ android {
         versionCode BUILD_DATE_TIME
         versionName "${BUILD_NAME}-${BUILD_DATE_TIME}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    // Always show the result of every unit test, even if it passes.
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
     }
     buildTypes {
         release {
@@ -56,6 +59,12 @@ android {
         //disable 'inlinedApi','AllowBackup'
         showAll true
         htmlReport true
+    }
+}
+// File output name
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "dnews-${variant.versionCode}-${variant.name}.apk"
     }
 }
 
@@ -109,20 +118,15 @@ dependencies {
     // implementation 'com.android.support:support-core-utils:27.0.2'
     implementation 'com.github.stfalcon:frescoimageviewer:0.5.0'
 
+    // DBFLow
+    annotationProcessor 'com.github.Raizlabs.DBFlow:dbflow-processor:4.1.2'
+    implementation 'com.github.Raizlabs.DBFlow:dbflow-core:4.1.2'
+    implementation 'com.github.Raizlabs.DBFlow:dbflow:4.1.2'
+
     // Device-Year
     implementation 'com.facebook.device.yearclass:yearclass:2.0.0'
 
     // https://github.com/square/seismic
     implementation 'com.squareup:seismic:1.0.2'
-
-    //Dbflow
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-
-    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-
-
-
-
 
 }

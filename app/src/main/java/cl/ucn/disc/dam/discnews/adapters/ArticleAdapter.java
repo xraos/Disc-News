@@ -130,6 +130,30 @@ public final class ArticleAdapter extends BaseAdapter{
     }
 
     /**
+     * Agrega un listado de articulos al {@link List} de {@link Article}.
+     *
+     * @param articles
+     * @return ArticleAdapter
+     */
+    public void addAll(final List<Article> articles) {
+
+        boolean changed = false;
+
+        // Agrego los articulos
+        if (articles != null) {
+            log.debug("Adding articles: {}", articles.size());
+            changed = this.articles.addAll(articles);
+            log.debug("Added {} articles.", articles.size());
+        }
+
+        // Si cambio la coleccion, se refresca.
+        if (changed) {
+
+            super.notifyDataSetChanged();
+        }
+    }
+
+    /**
      * Viewholder pattern
      */
     private static class ViewHolder {

@@ -88,6 +88,26 @@ public class Article {
     }
 
     /**
+     * Fix the article
+     *
+     * @param article to fix.
+     */
+    public static void fix(final Article article) {
+
+        final StringBuilder sb = new StringBuilder();
+        sb.append(article.title);
+        sb.append("-");
+        sb.append(article.publishedAt);
+
+        // Calculate ID from title + publishedAt
+        article.id = UUID.nameUUIDFromBytes(sb.toString().getBytes());
+
+        if (article.author == null) {
+            article.author = "unknow";
+        }
+    }
+
+    /**
      * Internal article source.
      */
     @Builder

@@ -6,8 +6,6 @@ import com.google.gson.GsonBuilder;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import cl.ucn.disc.dam.discnews.model.Noticia;
-
 /**
  * Example local unit test, which will execute on the development machine (host).
  *

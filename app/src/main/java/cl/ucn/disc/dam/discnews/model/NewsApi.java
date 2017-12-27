@@ -8,8 +8,11 @@ import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 
+/**
+ * Clase generada via http://www.jsonschema2pojo.org/
+ */
 @Builder
-public class NewsApi {
+public final class NewsApi {
 
     @Getter
     private String status;
@@ -26,7 +29,6 @@ public class NewsApi {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-
     }
-}
 
+}
