@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.LocalDateTime;
 
+import lombok.Builder;
 import lombok.Getter;
 
 /**
@@ -14,13 +15,14 @@ import lombok.Getter;
  * @author Rodrigo Oyarzun Saire
  */
 
+@Builder
 public final class Noticia {
 
     /**
      * Descripcion en una linea del titulo de la noticia
      */
     @Getter
-    private String titulo = "hola";
+    private String titulo;
 
     /**
      * Descripcion en 2 lineas y con un maximo de 140 chars
