@@ -3,7 +3,6 @@ package cl.ucn.disc.dam.discnews.model;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Builder;
@@ -22,7 +21,7 @@ public class NewsApi {
     private String sortBy;
 
     @Getter
-    private List<Article> articles = new ArrayList<Article>();
+    private List<Article> articles;
 
     @Override
     public String toString() {

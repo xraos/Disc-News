@@ -9,6 +9,9 @@ def BUILD_NAME = "Monkey King"
 
 apply plugin: 'com.android.application'
 
+// Version Dbflow
+def dbflow_version = "4.1.2"
+
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
@@ -57,31 +60,69 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    // implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Simple Logging Facade 4 Java
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta3'
     testImplementation 'junit:junit:4.12'
+    // androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    // androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    // https://mvnrepository.com/artifact/org.assertj/assertj-core
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.8.0'
 
+    testAnnotationProcessor 'org.projectlombok:lombok:1.16.18'
+    testImplementation 'org.projectlombok:lombok:1.16.18'
 
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    // Logback console core module
+    testImplementation 'ch.qos.logback:logback-core:1.2.3'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.3'
 
-    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    // Logback Android core module
+    runtimeOnly 'com.github.tony19:logback-android-core:1.1.1-6'
+    runtimeOnly('com.github.tony19:logback-android-classic:1.1.1-6') {
+        // workaround issue #73
+        exclude group: 'com.google.android', module: 'android'
+    }
+
+    // Commons Lang3
+    implementation 'org.apache.commons:commons-lang3:3.7'
+
+    // Lombok Android
+    annotationProcessor 'org.projectlombok:lombok:1.16.18'
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+
+    // GSON to JSON converter
     implementation 'com.google.code.gson:gson:2.8.2'
 
     // Cliente http
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+    // Prettytime
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    implementation 'joda-time:joda-time:2.9.9'
 
-    // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+    // Process image
+    implementation 'com.facebook.fresco:fresco:1.5.0'
+    // implementation 'com.android.support:support-core-utils:27.0.2'
+    implementation 'com.github.stfalcon:frescoimageviewer:0.5.0'
+
+    // Device-Year
+    implementation 'com.facebook.device.yearclass:yearclass:2.0.0'
+
+    // https://github.com/square/seismic
+    implementation 'com.squareup:seismic:1.0.2'
+
+    //Dbflow
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+
+
 
 
 }

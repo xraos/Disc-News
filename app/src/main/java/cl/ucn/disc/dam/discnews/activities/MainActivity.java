@@ -1,12 +1,12 @@
-package cl.ucn.disc.dam.discnews.controller;
+package cl.ucn.disc.dam.discnews.activities;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-
-import cl.ucn.disc.dam.discnews.tasks.GetArticlesTask;
+import android.widget.BaseAdapter;
 
 public class MainActivity extends ListActivity {
-    private final ArticleAdapter articleAdapter = new ArticleAdapter();
+
+    private BaseAdapter articleAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +15,7 @@ public class MainActivity extends ListActivity {
 
         super.setListAdapter(articleAdapter);
 
-        final GetArticlesTask getArticlesTask = new GetArticlesTask();
-        getArticlesTask.execute(articleAdapter);
+
     }
 
 

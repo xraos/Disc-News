@@ -19,7 +19,10 @@ allprojects {
     repositories {
         google()
         jcenter()
+        // required to find the project's artifacts
+        maven { url "https://www.jitpack.io" }
     }
+
 }
 
 task clean(type: Delete) {

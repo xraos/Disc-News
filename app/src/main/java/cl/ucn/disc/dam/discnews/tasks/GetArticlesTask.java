@@ -7,6 +7,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import java.io.IOException;
 import java.util.List;
 
+import cl.ucn.disc.dam.discnews.adapters.ArticleAdapter;
 import cl.ucn.disc.dam.discnews.controller.NewsController;
 import cl.ucn.disc.dam.discnews.model.Article;
 
@@ -55,5 +56,8 @@ public final class GetArticlesTask extends AsyncTask<Void, Void, List<Article>> 
         }
 
 
+    }
+
+    public void execute(ArticleAdapter articleAdapter) {
     }
 }

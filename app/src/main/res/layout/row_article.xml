@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView android:id="@+id/text1"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ra_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        fresco:actualImageScaleType="focusCrop" />
 
-    <TextView android:id="@+id/text2"
-        android:textSize="16sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+    <TextView
+        android:id="@+id/ra_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Title"
+        fresco:layout_constraintStart_toEndOf="@+id/ra_image"
+        fresco:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ra_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="description"
+        fresco:layout_constraintTop_toBottomOf="@+id/ra_title"
+        tools:layout_editor_absoluteX="128dp" />
+
+    <TextView
+        android:id="@+id/ra_source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="source"
+        fresco:layout_constraintStart_toEndOf="@+id/ra_image"
+        fresco:layout_constraintTop_toBottomOf="@+id/ra_description" />
+
+    <TextView
+        android:id="@+id/ra_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="date"
+        fresco:layout_constraintStart_toEndOf="@+id/ra_image"
+        fresco:layout_constraintTop_toBottomOf="@+id/ra_source" />
+
+    <TextView
+        android:id="@+id/ra_uuid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="84dp"
+        android:text="uuid"
+        fresco:layout_constraintStart_toEndOf="@+id/ra_date"
+        fresco:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
